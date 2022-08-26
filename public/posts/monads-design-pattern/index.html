@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>
+  Monads Design Pattern · Dimas Arna
+</title>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+
+
+
+
+<meta name="author" content="Dimas Arna">
+<meta name="description" content="This article will explain about monads design pattern and why it is useful in programming.">
+<meta name="keywords" content="blog,developer,personal">
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Monads Design Pattern"/>
+<meta name="twitter:description" content="This article will explain about monads design pattern and why it is useful in programming."/>
+
+<meta property="og:title" content="Monads Design Pattern" />
+<meta property="og:description" content="This article will explain about monads design pattern and why it is useful in programming." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/monads-design-pattern/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2022-08-26T16:28:58+07:00" />
+<meta property="article:modified_time" content="2022-08-26T16:28:58+07:00" />
+
+
+
+
+
+<link rel="canonical" href="http://example.org/posts/monads-design-pattern/">
+
+
+<link rel="preload" href="/fonts/forkawesome-webfont.woff2?v=1.2.0" as="font" type="font/woff2" crossorigin>
+
+
+  
+  
+  <link rel="stylesheet" href="/css/coder.min.c4d7e93a158eda5a65b3df343745d2092a0a1e2170feeec909b8a89443903c6a.css" integrity="sha256-xNfpOhWO2lpls980N0XSCSoKHiFw/u7JCbiolEOQPGo=" crossorigin="anonymous" media="screen" />
+
+
+
+
+
+
+  
+    
+    
+    <link rel="stylesheet" href="/css/coder-dark.min.39e41a7f16bdf8cb16e43cae7d714fa1016f1d2d2898a5b3f27f42c9979204e2.css" integrity="sha256-OeQafxa9&#43;MsW5DyufXFPoQFvHS0omKWz8n9CyZeSBOI=" crossorigin="anonymous" media="screen" />
+  
+
+
+
+ 
+
+
+
+
+<link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+<link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+
+<link rel="apple-touch-icon" href="/images/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#5bbad5">
+
+
+
+
+<meta name="generator" content="Hugo 0.101.0" />
+
+
+
+
+
+  </head>
+
+
+
+
+
+
+<body class="preload-transitions colorscheme-auto">
+  
+<div class="float-container">
+    <a id="dark-mode-toggle" class="colorscheme-toggle">
+        <i class="fa fa-adjust fa-fw" aria-hidden="true"></i>
+    </a>
+</div>
+
+
+  <main class="wrapper">
+    <nav class="navigation">
+  <section class="container">
+    <a class="navigation-title" href="/">
+      Dimas Arna
+    </a>
+    
+      <input type="checkbox" id="menu-toggle" />
+      <label class="menu-button float-right" for="menu-toggle">
+        <i class="fa fa-bars fa-fw" aria-hidden="true"></i>
+      </label>
+      <ul class="navigation-list">
+        
+          
+            <li class="navigation-item">
+              <a class="navigation-link" href="/posts/">Blog</a>
+            </li>
+          
+        
+        
+      </ul>
+    
+  </section>
+</nav>
+
+
+    <div class="content">
+      
+  <section class="container post">
+    <article>
+      <header>
+        <div class="post-title">
+          <h1 class="title">
+            <a class="title-link" href="http://example.org/posts/monads-design-pattern/">
+              Monads Design Pattern
+            </a>
+          </h1>
+        </div>
+        <div class="post-meta">
+          <div class="date">
+            <span class="posted-on">
+              <i class="fa fa-calendar" aria-hidden="true"></i>
+              <time datetime="2022-08-26T16:28:58&#43;07:00">
+                August 26, 2022
+              </time>
+            </span>
+            <span class="reading-time">
+              <i class="fa fa-clock-o" aria-hidden="true"></i>
+              5-minute read
+            </span>
+          </div>
+          <div class="authors">
+  <i class="fa fa-user" aria-hidden="true"></i>
+    <a href="/authors/dimas-arna/">Dimas Arna</a></div>
+
+          <div class="categories">
+  <i class="fa fa-folder" aria-hidden="true"></i>
+    <a href="/categories/design-pattern/">design-pattern</a></div>
+
+          <div class="tags">
+  <i class="fa fa-tag" aria-hidden="true"></i>
+    <span class="tag">
+      <a href="/tags/monads/">monads</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/functional-programming/">functional-programming</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/software-engineer/">software-engineer</a>
+    </span>
+      <span class="separator">•</span>
+    <span class="tag">
+      <a href="/tags/design-pattern/">design-pattern</a>
+    </span></div>
+
+        </div>
+      </header>
+
+      <div>
+        
+        <h2 id="introduction">
+  Introduction
+  <a class="heading-link" href="#introduction">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Monads is important concept in programming and mathematics. But in this article, I want to spesifically explain about monads as the design pattern.</p>
+<p>Monads are the ingredient needed to bridge the gap between mathematical (pure) functions (such as + or exponential) and program functions (such as malloc or exception throwing). Roughly:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>program function = mathematical function + computational monad
+</span></span></code></pre></div><p>By solving this equation we obtain</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>computational monad = program function - mathematical function
+</span></span></code></pre></div><p>The difference between program functions and mathematical functions is that program functions may have effects, which is whatever they may do meanwhile, like throw exception, write the state, run a random number generator. Monads are thus formal devices to capture effects.</p>
+<blockquote>
+<p>Note: In this article, I will write some example with <strong>C++</strong> language.</p>
+</blockquote>
+<h2 id="monads-components">
+  Monads Components
+  <a class="heading-link" href="#monads-components">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Monads has 3 components:</p>
+<ol>
+<li>Wrapper Type</li>
+<li>Wrap Function</li>
+<li>Run Function</li>
+</ol>
+<p>Let see some example from common monads which is <code>Writer</code> and <code>Option</code>.</p>
+<h2 id="writer-monads">
+  Writer Monads
+  <a class="heading-link" href="#writer-monads">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Suppose we want to write program function that run mathematical operation and write it to the logs.</p>
+<p>First, we need the wrapper type like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="font-weight:bold">typedef</span> <span style="font-weight:bold">struct</span> <span style="font-weight:bold">number_with_logs</span> {
+</span></span><span style="display:flex;"><span>    <span style="">int</span> value;
+</span></span><span style="display:flex;"><span>    vector&lt;string&gt; logs;
+</span></span><span style="display:flex;"><span>} number_with_logs_t;
+</span></span></code></pre></div><p>Secondly, we need the wrap function to transform the raw type (or primitive type) into wrapper type.
+We can write it like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>number_with_logs_t wrap_number_with_logs(<span style="">int</span> number) {
+</span></span><span style="display:flex;"><span>    vector&lt;string&gt; empty_string_array;
+</span></span><span style="display:flex;"><span>    number_with_logs_t new_type = {
+</span></span><span style="display:flex;"><span>        .value = number,
+</span></span><span style="display:flex;"><span>        .logs = empty_string_array
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> new_type;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And for the last components we need some run function, which is a function that abstract away the process of transform the monad and write to the log.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>number_with_logs_t run_with_logs(number_with_logs_t x,
+</span></span><span style="display:flex;"><span>                                function&lt;number_with_logs_t(<span style="">int</span>)&gt; transform) {
+</span></span><span style="display:flex;"><span>    number_with_logs_t new_data = transform(x.value);
+</span></span><span style="display:flex;"><span>    x.logs.push_back(new_data.logs.back());
+</span></span><span style="display:flex;"><span>    number_with_logs_t return_data = {
+</span></span><span style="display:flex;"><span>        .value = new_data.value,
+</span></span><span style="display:flex;"><span>        .logs = x.logs
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> return_data;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now we can just write any transform function that do the job for mathematical operation and write the result to the log. As long as the return type is the wrapper type, we will fine with that.</p>
+<p>For example, I write a transform function to square the number and return the squared number along with the logs array.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>number_with_logs_t square(<span style="">int</span> x) {
+</span></span><span style="display:flex;"><span>    <span style="">char</span> log_buffer[100];
+</span></span><span style="display:flex;"><span>    <span style="">int</span> return_value = x * x;
+</span></span><span style="display:flex;"><span>    vector&lt;string&gt; return_logs;
+</span></span><span style="display:flex;"><span>    sprintf(log_buffer, <span style="font-style:italic">&#34;Squared %d to get %d.&#34;</span>, x, return_value);
+</span></span><span style="display:flex;"><span>    string log = log_buffer;
+</span></span><span style="display:flex;"><span>    return_logs.push_back(log);
+</span></span><span style="display:flex;"><span>    number_with_logs_t return_data = {
+</span></span><span style="display:flex;"><span>        .value = return_value,
+</span></span><span style="display:flex;"><span>        .logs = return_logs
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> return_data;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>And also this function to add one to the number and return the result along with the logs array.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>number_with_logs_t add_one(<span style="">int</span> x) {
+</span></span><span style="display:flex;"><span>    <span style="">char</span> log_buffer[100];
+</span></span><span style="display:flex;"><span>    <span style="">int</span> return_value = x + 1;
+</span></span><span style="display:flex;"><span>    vector&lt;string&gt; return_logs;
+</span></span><span style="display:flex;"><span>    sprintf(log_buffer, <span style="font-style:italic">&#34;Added 1 to %d to get %d.&#34;</span>, x, return_value);
+</span></span><span style="display:flex;"><span>    string log = log_buffer;
+</span></span><span style="display:flex;"><span>    return_logs.push_back(log);
+</span></span><span style="display:flex;"><span>    number_with_logs_t return_data = {
+</span></span><span style="display:flex;"><span>        .value = return_value,
+</span></span><span style="display:flex;"><span>        .logs = return_logs
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> return_data;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now in practice if we want to chain the operation we can just call the run function, give it the variable of wrapper type and also the transform function, then leave a monad do the job behind the scene for writing to the logs.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>number_with_logs_t a = wrap_number_with_logs(5);
+</span></span><span style="display:flex;"><span>number_with_logs_t b = run_with_logs(a, add_one);
+</span></span><span style="display:flex;"><span>number_with_logs_t result = run_with_logs(b, square);
+</span></span><span style="display:flex;"><span>cout &lt;&lt; <span style="font-style:italic">&#34;Last value: &#34;</span> &lt;&lt; result.value &lt;&lt; endl;
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">while</span>(result.logs.size() &gt; 0) {
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; result.logs.back() &lt;&lt; endl;
+</span></span><span style="display:flex;"><span>    result.logs.pop_back();
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The result is:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>Last value: 36
+</span></span><span style="display:flex;"><span>Squared 6 to get 36.
+</span></span><span style="display:flex;"><span>Added 1 to 5 to get 6.
+</span></span></code></pre></div><h2 id="option-monads">
+  Option Monads
+  <a class="heading-link" href="#option-monads">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p><code>Option</code> is data structure (or data type) that can contain something or nothing. So we can implement as struct in <strong>C/C++</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="font-weight:bold">typedef</span> <span style="font-weight:bold">struct</span> <span style="font-weight:bold">Option</span> {
+</span></span><span style="display:flex;"><span>    <span style="">bool</span> is_none;
+</span></span><span style="display:flex;"><span>    <span style="">void</span> * data;
+</span></span><span style="display:flex;"><span>} Option;
+</span></span></code></pre></div><p>Now, for wrap function we need to write two function for two possible &ldquo;type&rdquo; which is <code>Some</code> or <code>None</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Option Some(<span style="">void</span> * a) {
+</span></span><span style="display:flex;"><span>    Option result = {
+</span></span><span style="display:flex;"><span>        .is_none = false,
+</span></span><span style="display:flex;"><span>        .data = a
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> result;
+</span></span><span style="display:flex;"><span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Option None() {
+</span></span><span style="display:flex;"><span>    Option result = {
+</span></span><span style="display:flex;"><span>        .is_none = true,
+</span></span><span style="display:flex;"><span>        .data = NULL
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> result;
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><p>Then the run function is simply doing checking before passing the <code>Option</code> to the transform function, if the <code>Option</code> is contain nothing or <code>None</code> then simply return <code>None</code>.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Option run(Option x, function&lt;Option(<span style="">int</span>)&gt; transform) {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">if</span> (x.is_none) <span style="font-weight:bold">return</span> None();
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">else</span> {
+</span></span><span style="display:flex;"><span>        <span style="">int</span> * value = (<span style="">int</span> *) x.data;
+</span></span><span style="display:flex;"><span>        Option result = transform(*value);
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">return</span> result;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>The rest is just up to you to create transform function, here I write two functions to do different mathematical operation first to square the number and second to add one to the number. For complement, I also add another function to print the number.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span>Option square(<span style="">int</span> x) {
+</span></span><span style="display:flex;"><span>    <span style="">int</span> * value = (<span style="">int</span> *) malloc(<span style="font-weight:bold">sizeof</span>(<span style="">int</span>));
+</span></span><span style="display:flex;"><span>    *value = x * x;
+</span></span><span style="display:flex;"><span>    Option result = Some(value);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Option add_one(<span style="">int</span> x) {
+</span></span><span style="display:flex;"><span>    <span style="">int</span> * value = (<span style="">int</span> *) malloc(<span style="font-weight:bold">sizeof</span>(<span style="">int</span>));
+</span></span><span style="display:flex;"><span>    *value = x + 1;
+</span></span><span style="display:flex;"><span>    Option result = Some(value);
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> result;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Option print(<span style="">int</span> x) {
+</span></span><span style="display:flex;"><span>    <span style="">int</span> * value = (<span style="">int</span> *) malloc(<span style="font-weight:bold">sizeof</span>(<span style="">int</span>));
+</span></span><span style="display:flex;"><span>    *value = x;
+</span></span><span style="display:flex;"><span>    Option result = Some(value);
+</span></span><span style="display:flex;"><span>    cout &lt;&lt; x &lt;&lt; endl;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">return</span> result;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>As the result, we can chain together operations like this:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="">int</span> * x = (<span style="">int</span> *) malloc(<span style="font-weight:bold">sizeof</span>(<span style="">int</span>));
+</span></span><span style="display:flex;"><span>*x = 5;
+</span></span><span style="display:flex;"><span>Option a = Some(x);
+</span></span><span style="display:flex;"><span>a = run(a, square);
+</span></span><span style="display:flex;"><span>a = run(a, add_one);
+</span></span><span style="display:flex;"><span>a = run(a, print);
+</span></span></code></pre></div><p>Console result:</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-fallback" data-lang="fallback"><span style="display:flex;"><span>26
+</span></span></code></pre></div><h2 id="summary">
+  Summary
+  <a class="heading-link" href="#summary">
+    <i class="fa fa-link" aria-hidden="true" title="Link to heading"></i>
+    <span class="sr-only">Link to heading</span>
+  </a>
+</h2>
+<p>Monads are a design pattern that allows a user to chain operations while the monad manages secret work behind the scenes.</p>
+<p>Monads has 3 components:</p>
+<ol>
+<li>Wrapper Type</li>
+<li>Wrap Function</li>
+<li>Run Function</li>
+</ol>
+<p>References:</p>
+<ol>
+<li><a href="https://www8.cs.fau.de/monad-based-programming">Monad-based Programming</a></li>
+<li><a href="https://youtu.be/C2w45qRc3aU">The Absolute Best Intro to Monads For Software Engineers</a></li>
+</ol>
+
+      </div>
+
+
+      <footer>
+        
+
+
+        
+        
+        
+      </footer>
+    </article>
+
+    
+  </section>
+
+    </div>
+
+    <footer class="footer">
+  <section class="container">
+    ©
+    
+    2022
+     Dimas Arna 
+    ·
+    
+    Powered by <a href="https://gohugo.io/">Hugo</a> & <a href="https://github.com/luizdepra/hugo-coder/">Coder</a>.
+    
+  </section>
+</footer>
+
+  </main>
+
+  
+
+  
+  
+  <script src="/js/coder.min.236049395dc3682fb2719640872958e12f1f24067bb09c327b233e6290c7edac.js" integrity="sha256-I2BJOV3DaC&#43;ycZZAhylY4S8fJAZ7sJwyeyM&#43;YpDH7aw="></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</body>
+
+</html>
