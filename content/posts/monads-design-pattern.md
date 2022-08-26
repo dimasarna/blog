@@ -29,7 +29,7 @@ computational monad = program function - mathematical function
 
 The difference between program functions and mathematical functions is that program functions may have effects, which is whatever they may do meanwhile, like throw exception, write the state, run a random number generator. Monads are thus formal devices to capture effects.
 
-> Note: In this article, I will write some example with **C++** language.
+> Note: In this article, I will write some of the example with **C++** language.
 
 ## Monads Components
 
