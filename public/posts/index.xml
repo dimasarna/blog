@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Dimas Arna</title>
-    <link>http://example.org/posts/</link>
+    <link>https://dimasarna-blog.netlify.app/posts/</link>
     <description>Recent content in Posts on Dimas Arna</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Aug 2022 16:28:58 +0700</lastBuildDate><atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Aug 2022 16:28:58 +0700</lastBuildDate><atom:link href="https://dimasarna-blog.netlify.app/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Monads Design Pattern</title>
-      <link>http://example.org/posts/monads-design-pattern/</link>
+      <link>https://dimasarna-blog.netlify.app/posts/monads-design-pattern/</link>
       <pubDate>Fri, 26 Aug 2022 16:28:58 +0700</pubDate>
       
-      <guid>http://example.org/posts/monads-design-pattern/</guid>
+      <guid>https://dimasarna-blog.netlify.app/posts/monads-design-pattern/</guid>
       <description>Introduction Link to heading Monads is important concept in programming and mathematics. But in this article, I want to spesifically explain about monads as the design pattern.
 Monads are the ingredient needed to bridge the gap between mathematical (pure) functions (such as + or exponential) and program functions (such as malloc or exception throwing). Roughly:
 program function = mathematical function + computational monad By solving this equation we obtain</description>
@@ -20,10 +20,10 @@ program function = mathematical function + computational monad By solving this e
     
     <item>
       <title>My First Post</title>
-      <link>http://example.org/posts/my-first-post/</link>
+      <link>https://dimasarna-blog.netlify.app/posts/my-first-post/</link>
       <pubDate>Fri, 19 Aug 2022 09:55:31 +0700</pubDate>
       
-      <guid>http://example.org/posts/my-first-post/</guid>
+      <guid>https://dimasarna-blog.netlify.app/posts/my-first-post/</guid>
       <description>Hello everyone this is my first attempt to build my own blog with hugo, a fast static site generator. This will be starting my journey as content writer. My first content will be about Rust programming language. As Rust are now popular for replacing the C language, and because I have basic in C/C++, why don&amp;rsquo;t I try to learn Rust and let&amp;rsquo;s see the pros and cons between the two!</description>
     </item>
     

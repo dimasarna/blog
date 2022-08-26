@@ -2,37 +2,37 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://dimasarna-blog.netlify.app/categories/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/design-pattern/</loc>
+    <loc>https://dimasarna-blog.netlify.app/tags/design-pattern/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/categories/design-pattern/</loc>
+    <loc>https://dimasarna-blog.netlify.app/categories/design-pattern/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
+    <loc>https://dimasarna-blog.netlify.app/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/functional-programming/</loc>
+    <loc>https://dimasarna-blog.netlify.app/tags/functional-programming/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/monads/</loc>
+    <loc>https://dimasarna-blog.netlify.app/tags/monads/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/monads-design-pattern/</loc>
+    <loc>https://dimasarna-blog.netlify.app/posts/monads-design-pattern/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/</loc>
+    <loc>https://dimasarna-blog.netlify.app/posts/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/software-engineer/</loc>
+    <loc>https://dimasarna-blog.netlify.app/tags/software-engineer/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://dimasarna-blog.netlify.app/tags/</loc>
     <lastmod>2022-08-26T16:28:58+07:00</lastmod>
   </url><url>
-    <loc>http://example.org/posts/my-first-post/</loc>
+    <loc>https://dimasarna-blog.netlify.app/posts/my-first-post/</loc>
     <lastmod>2022-08-19T09:55:31+07:00</lastmod>
   </url>
 </urlset>

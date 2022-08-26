@@ -2,44 +2,44 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Dimas Arna</title>
-    <link>http://example.org/tags/</link>
+    <link>https://dimasarna-blog.netlify.app/tags/</link>
     <description>Recent content in Tags on Dimas Arna</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 26 Aug 2022 16:28:58 +0700</lastBuildDate><atom:link href="http://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 26 Aug 2022 16:28:58 +0700</lastBuildDate><atom:link href="https://dimasarna-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>design-pattern</title>
-      <link>http://example.org/tags/design-pattern/</link>
+      <link>https://dimasarna-blog.netlify.app/tags/design-pattern/</link>
       <pubDate>Fri, 26 Aug 2022 16:28:58 +0700</pubDate>
       
-      <guid>http://example.org/tags/design-pattern/</guid>
+      <guid>https://dimasarna-blog.netlify.app/tags/design-pattern/</guid>
       <description></description>
     </item>
     
     <item>
       <title>functional-programming</title>
-      <link>http://example.org/tags/functional-programming/</link>
+      <link>https://dimasarna-blog.netlify.app/tags/functional-programming/</link>
       <pubDate>Fri, 26 Aug 2022 16:28:58 +0700</pubDate>
       
-      <guid>http://example.org/tags/functional-programming/</guid>
+      <guid>https://dimasarna-blog.netlify.app/tags/functional-programming/</guid>
       <description></description>
     </item>
     
     <item>
       <title>monads</title>
-      <link>http://example.org/tags/monads/</link>
+      <link>https://dimasarna-blog.netlify.app/tags/monads/</link>
       <pubDate>Fri, 26 Aug 2022 16:28:58 +0700</pubDate>
       
-      <guid>http://example.org/tags/monads/</guid>
+      <guid>https://dimasarna-blog.netlify.app/tags/monads/</guid>
       <description></description>
     </item>
     
     <item>
       <title>software-engineer</title>
-      <link>http://example.org/tags/software-engineer/</link>
+      <link>https://dimasarna-blog.netlify.app/tags/software-engineer/</link>
       <pubDate>Fri, 26 Aug 2022 16:28:58 +0700</pubDate>
       
-      <guid>http://example.org/tags/software-engineer/</guid>
+      <guid>https://dimasarna-blog.netlify.app/tags/software-engineer/</guid>
       <description></description>
     </item>
     
